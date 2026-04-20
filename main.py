@@ -14,7 +14,6 @@ api_key = os.environ.get("OWM_API_KEY")
 account_sid = os.environ.get("ACCOUNT_SID")
 auth_token = os.environ.get("AUTH_TOKEN")
 
-
 params = {
     "lat": LAT,
     "lon": LON,
@@ -39,8 +38,8 @@ if will_it_rain:
     client = Client(account_sid, auth_token)
     message = client.messages.create(
         body="It is goint to rain today, bring the umbrella!!!☔️",
-        from_="+17755875397",
-        to="+4915251724131",
+        from_=os.environ.get("TWILIO_NUMBER"),
+        to=os.environ.get("MY_NUMBER"),
     )
 
     print(message.status)
